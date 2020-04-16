@@ -135,9 +135,11 @@ client.on('message', async message => {
   if(theirchoice != `rock` && theirchoice != `paper`  && theirchoice != `scissors`) message.channel.send(`Hey, you didnt say say a correct input. Just rock, paper, or scissors, remember?`)
  }
  if(message.content.startsWith(`${p}av`)) {
+  let user = message.mentions.users.first();
+   if(!user) user = message.author;
   let av = new Discord.MessageEmbed()
-  .setTitle(`This is your avatar, ${message.author.username}!`)
-  .setImage(message.author.displayAvatarURL())
+  .setTitle(`${user.username}'s Avatar`)
+  .setImage(user.displayAvatarURL())
   .setColor('RANDOM')
   message.channel.send(av);
  }
@@ -175,11 +177,11 @@ if(message.content.startsWith(`${p}mute`)) {
     });
     message.guild.channels.cache.forEach((channel) => {
       if (channel.type == 'text') {
-        channel.updateOverwrite(FrontierMuted, {
+        channel.updateOverwrite(role, {
           deny: ['SEND_MESSAGES', `ADD_REACTIONS`],
         })
     } else if (channel.type == 'voice') {
-        channel.updateOverwrite(FrontierMuted, {
+        channel.updateOverwrite(role, {
           deny: [`SPEAK`],
         })
 
@@ -323,10 +325,11 @@ if(message.content.startsWith(`${p}mute`)) {
     message.channel.send(`You got a ${dice}!`)
   }
   if(message.content.startsWith(`${p}nick`)) {
-    let nick = args.slice(1).join (" ");
+    if(args.join(" ").split("").length > 32) return message.channel.send("Your nickname can't be more than 32 characters!")
+    let wait = await message.channel.send("Changing nickname...");
+    let nick = args.join(" ");
     if(!args[0]) return message.channel.send(`You didn't specify a nickname!`)
-    await message.member.setNickname(nick);
-    wait.delete();
+    await message.member.setNickname(nick).then(() => wait.delete());
     message.channel.send(`Your nickname has been set to ${nick}!`)
   }
   if(message.content.startsWith(`${p}comingsoon`)) {
