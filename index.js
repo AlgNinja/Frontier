@@ -314,6 +314,7 @@ if(message.content.startsWith(`${p}mute`)) {
       .addField(`Make a member-log channel, with permissions set to everyone read only except for admin and the bot:`, `This is for greetings when members join and leave the server`)
       .addField(`Make a reports channel, with permissions set so that only you and the bot can type, but everyone can read:`, `This is for when somebody does something bad and someone wants to report it`)
       .addField(`Make a commands channel, where everyone can type, optionally with slow mode enabled:`, `Do this to ensure that commands don't mess with the focus of the rest of your server`)
+      .addField(`Make a nsfw meme channnel, preferably with slow mode`, `Meme commands need to be in nsfw due to their sometimes innapropriate nature.`)
       .addField(`Make a mod-logs channel, with permissions set so that only you and the bot can type, but everyone can read:`, ` This is so that you can properly use the kick and bans command and make it easier for admin and mods to see.`)
       message.author.send(setup)
       message.channel.send(`There you go ${message.author.username}, I sent you the message privately!`)
