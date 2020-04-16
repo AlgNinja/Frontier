@@ -175,11 +175,11 @@ if(message.content.startsWith(`${p}mute`)) {
     });
     message.guild.channels.cache.forEach((channel) => {
       if (channel.type == 'text') {
-        channel.updateOverwrite(FrontierMuted, {
+        channel.updateOverwrite(role, {
           deny: ['SEND_MESSAGES', `ADD_REACTIONS`],
         })
     } else if (channel.type == 'voice') {
-        channel.updateOverwrite(FrontierMuted, {
+        channel.updateOverwrite(role, {
           deny: [`SPEAK`],
         })
 
