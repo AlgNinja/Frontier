@@ -323,10 +323,10 @@ if(message.content.startsWith(`${p}mute`)) {
     message.channel.send(`You got a ${dice}!`)
   }
   if(message.content.startsWith(`${p}nick`)) {
+    let wait = await message.channel.send("Changing nickname..."
     let nick = args.slice(1).join (" ");
     if(!args[0]) return message.channel.send(`You didn't specify a nickname!`)
-    await message.member.setNickname(nick);
-    wait.delete();
+    await message.member.setNickname(nick).then(() => wait.delete());
     message.channel.send(`Your nickname has been set to ${nick}!`)
   }
   if(message.content.startsWith(`${p}comingsoon`)) {
