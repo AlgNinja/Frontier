@@ -135,9 +135,11 @@ client.on('message', async message => {
   if(theirchoice != `rock` && theirchoice != `paper`  && theirchoice != `scissors`) message.channel.send(`Hey, you didnt say say a correct input. Just rock, paper, or scissors, remember?`)
  }
  if(message.content.startsWith(`${p}av`)) {
+  let user = message.mentions.users.first();
+   if(!user) user = message.author;
   let av = new Discord.MessageEmbed()
-  .setTitle(`This is your avatar, ${message.author.username}!`)
-  .setImage(message.author.displayAvatarURL())
+  .setTitle(`${user.username}'s Avatar`)
+  .setImage(user.displayAvatarURL())
   .setColor('RANDOM')
   message.channel.send(av);
  }
