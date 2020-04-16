@@ -361,7 +361,7 @@ if(message.content.startsWith(`${p}mute`)) {
     const img = await randomPuppy(subreddit);
     const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setImage(img)
+    .setImage(`${img}`)
     .setTitle(`From /r/${subreddit}`)
     .setURL(`https://reddit.com/r/${subreddit}`);
     message.channel.send(embed);
