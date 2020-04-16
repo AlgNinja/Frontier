@@ -1,0 +1,27 @@
+{
+  "name": "frontier",
+  "version": "1.0.0",
+  "description": "A multipurpose bot for moderation and fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlgNinja/Frontier.git"
+  },
+  "author": "AlgNinja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlgNinja/Frontier/issues"
+  },
+  "homepage": "https://github.com/AlgNinja/Frontier#readme",
+  "dependencies": {
+    "discord.js": "^12.1.1",
+    "eclyssia-api": "^1.0.0",
+    "mathjs": "^6.6.4",
+    "node-fetch": "^2.6.0",
+    "random-puppy": "^1.1.0",
+    "snekfetch": "^4.0.4"
+  }
+}
