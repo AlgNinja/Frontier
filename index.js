@@ -323,8 +323,9 @@ if(message.content.startsWith(`${p}mute`)) {
     message.channel.send(`You got a ${dice}!`)
   }
   if(message.content.startsWith(`${p}nick`)) {
+    if(args.join("").split("").length > 32) return message.channel.send("Your nickname can't be more than 32 characters")
     let wait = await message.channel.send("Changing nickname...");
-    let nick = args.join(" ");
+    let nick = args.join("");
     if(!args[0]) return message.channel.send(`You didn't specify a nickname!`)
     await message.member.setNickname(nick).then(() => wait.delete());
     message.channel.send(`Your nickname has been set to ${nick}!`)
