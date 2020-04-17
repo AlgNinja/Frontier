@@ -376,18 +376,11 @@ if(message.content.startsWith(`${p}mute`)) {
     let url = `https://eclyssia-api.tk/api/v1/triggered?url=${profilepic}`;
     console.log(url);
     console.log(profilepic)
-    fetch(url, {
-      headers: {
-
-      }
-  }).then(async res => {
-      await message.channel.send({
-         files: [{
-             attachment: res.body,
-             name: `${tar.tag}-triggered.gif`
-         }]
-      }).then(() => msg.delete());
-  }).catch(err => console.error(err));
+    let embed = new Discord.MessageEmbed()
+    .setTitle("Test for arya")
+    .setImage(url);
+    message.channel.send(embed);
+    
 
  }
 
