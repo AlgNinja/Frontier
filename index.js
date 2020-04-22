@@ -24,7 +24,7 @@ const guild = new Discord.Guild(client);
 
 client.on("ready", () => {
   console.log("lets go!");
-  client.user.setPresence({ activity: { name: `${p}help for ${client.users.cache.size} users in ${client.guilds.cache.size} servers!  | CLOSED BETA` }, status: 'dnd' })
+  client.user.setPresence({ activity: { name: `${p}help for ${client.users.cache.size} users in ${client.guilds.cache.size} servers!  | CLOSED BETA` }, status: 'idle' })
 });
 
 
