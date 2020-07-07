@@ -392,7 +392,7 @@ if(message.content.startsWith(`${p}mute`)) {
   }).catch(err => console.error(err));
 
  }
- if(message.content.startsWith(`${p}bugs`)) {
+ if(message.content.startsWith(`${p}bug`)) {
   if (message.deletable) message.delete();
   const channel = message.guild.channels.cache.find(c => c.name === "bugs")
   if(!channel) return message.channel.send(`Couldn't find a "#bugs" channel`).then(m => m.delete(5000));
