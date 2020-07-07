@@ -377,6 +377,7 @@ if(message.content.startsWith(`${p}mute`)) {
     let url = `https://eclyssia-api.tk/api/v1/triggered?url=${profilepic}`;
     console.log(url);
     console.log(profilepic)
+    
     fetch(url, {
       headers: {
 
