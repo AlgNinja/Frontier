@@ -404,7 +404,7 @@ if(message.content.startsWith(`${p}mute`)) {
   .setTimestamp()
   .setFooter(message.guild.name, message.guild.iconURL())
   .setAuthor(`Bug found by: ${message.member.displayName}`, `${message.author.displayAvatarURL()}`)
-  .addField(`Bug:`, `${args.slice(1).join(" ")}`)
+  .addField(`Bug:`, `${args.slice(0).join(" ")}`)
   return channel.send(bug);
 }
 }
