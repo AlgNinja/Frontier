@@ -391,6 +391,22 @@ if(message.content.startsWith(`${p}mute`)) {
   }).catch(err => console.error(err));
 
  }
+ if(message.content.startsWith(`${p}bugs`)) {
+  if (message.deletable) message.delete();
+  const channel = message.guild.channels.cache.find(c => c.name === "bugs")
+  if(!channel) return message.channel.send(`Couldn't find a "#bugs" channel`).then(m => m.delete(5000));
+  else {
+
+  const bug = new Discord.MessageEmbed()
+  .setColor("#1bade2")
+  .setTitle("Frontier Bug Report-")
+  .setTimestamp()
+  .setFooter(message.guild.name, message.guild.iconURL())
+  .setAuthor(`Bug found by: ${message.member.displayName}`, `${message.author.displayAvatarURL()}`)
+  .addField(`Bug:`, `${args.slice(1).join(" ")}`)
+  return channel.send(bug);
+}
+}
 
 
 })
