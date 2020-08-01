@@ -14,6 +14,8 @@ const eclyssiaAPI = require('eclyssia-api');
 
 const fetch = require('node-fetch');
 
+const ytdl = require("ytdl-core");
+
 const p = config.prefix;
 
 client = new Discord.Client()
@@ -407,6 +409,20 @@ if(message.content.startsWith(`${p}mute`)) {
   .addField(`Bug:`, `${args.join(" ")}`)
   return channel.send(bug);
 }
+}
+if(message.content.startsWith(`${p}play`)) {
+  if(!message.member.voiceChannel) return message.channel.send("You aren't in a voice channel!");
+  if(message.guild.me.voiceChannel) return message.channel.send("Sorry, I'm already in a voice channel!")
+  if(!args[0]) return message.channel.send("Please put in a link.")
+  let validate = await ytdl.validateURL(args[0])
+  if(!validate) return message.channel.send("You didn't put in a working link.")
+
+  let info = ytdl.getInfo(args[0]);
+
+  let connection = await message.member.voiceChannel.join();
+  let dispatcher = await connection.play(ytdl(args[0], { filter: 'audioonly' }));
+  
+  message.channel.send(`Now playing: ${info.title}`)
 }
 
 
